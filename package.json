@@ -1,0 +1,25 @@
+{
+  "name": "ecommerce",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@babel/core": "*",
+    "@sanity/client": "*",
+    "@sanity/image-url": "*",
+    "@stripe/stripe-js": "*",
+    "canvas-confetti": "*",
+    "next": "13.0.2",
+    "next-sanity-image": "*",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hot-toast": "*",
+    "react-icons": "*",
+    "stripe": "*"
+  }
+}
