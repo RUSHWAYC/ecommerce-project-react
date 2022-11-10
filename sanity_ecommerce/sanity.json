@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "ecommerce"
+    "name": "ecomsite"
   },
   "api": {
-    "projectId": "tkc1wbrp",
+    "projectId": "eju0jfqm",
     "dataset": "production"
   },
   "plugins": [
