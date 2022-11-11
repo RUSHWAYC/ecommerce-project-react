@@ -3,11 +3,14 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutline, Star, AiOutlineSt
 import { Product } from '../../components'
 
 import { client, urlFor } from '../../lib/client'
+import { useStateContext } from '../../context/StateContext'
 
 const ProductDetails = ({ product, products }) => {
 
     const { image, name, details, price } = product
     const [index, setIndex] = useState(0)
+
+    const { decQty, incQty, qty } = useStateContext
 
   return (
     <div>
@@ -50,11 +53,11 @@ const ProductDetails = ({ product, products }) => {
                     <h3>Quanitity: </h3>
                     <p className='quantity-desc'>
                         <span className='minus'
-                        onClick=''><AiOutlineMinus /></span>
+                        onClick={decQty}><AiOutlineMinus /></span>
                         <span className='num'
-                        onClick=''>0</span>
+                        onClick=''>{qty}</span>
                         <span className='plus'
-                        onClick=''><AiOutlinePlus /></span>
+                        onClick={incQty}><AiOutlinePlus /></span>
                     </p>
                 </div>
                 <div className='buttons'>
