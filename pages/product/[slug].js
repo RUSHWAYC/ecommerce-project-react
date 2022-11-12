@@ -10,7 +10,8 @@ const ProductDetails = ({ product, products }) => {
     const { image, name, details, price } = product
     const [index, setIndex] = useState(0)
 
-    const { decQty, incQty, qty } = useStateContext
+    //Use state context from ../../context/StateContext
+    const { decQty, incQty, qty } = useStateContext()
 
   return (
     <div>
