@@ -5,13 +5,15 @@ import { Product } from '../../components'
 import { client, urlFor } from '../../lib/client'
 import { useStateContext } from '../../context/StateContext'
 
+
+//Props (client data) received from getStaticProps at the bottom.
 const ProductDetails = ({ product, products }) => {
 
     const { image, name, details, price } = product
     const [index, setIndex] = useState(0)
 
     //Use state context from ../../context/StateContext
-    const { decQty, incQty, qty } = useStateContext()
+    const { decQty, incQty, qty, onAdd } = useStateContext()
 
   return (
     <div>
@@ -64,7 +66,7 @@ const ProductDetails = ({ product, products }) => {
                 <div className='buttons'>
                     <button type='button'
                             className='add-to-cart'
-                            onClick=''
+                            onClick={() => onAdd(product, qty)}
                     >
                         Add to Cart
                     </button>
