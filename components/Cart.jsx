@@ -6,14 +6,35 @@ import toast from 'react-hot-toast'
 
 import { useStateContext } from '../context/StateContext'
 import { urlFor } from '../lib/client'
+import getStripe from '../lib/getStripe'
 
 const Cart = () => {
 
   const cartRef = useRef()
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext()
 
-  const handleCheckout = () => {
+
+  //Handle checkout with Stripe
+  const handleCheckout = async () => {
+    const stripe = await getStripe()
+    //API request to Next backend. Param1 API route, Param2 object with options.
+    const response = await fetch('/api/stripe', {
+      //In stripe.js POST is set as required.
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      //Turn all the cart items into JSON.
+      body: JSON.stringify(cartItems)
+    })
+
+    if(response.statusCode === 500) return
     
+    const data = await response.json()
+
+    toast.loading('Redirecting...')
+
+    stripe.redirectToCheckout({ sessionId: data.id })
   }
 
   return (
